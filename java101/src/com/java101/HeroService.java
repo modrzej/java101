@@ -1,46 +1,41 @@
 package com.java101;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;;
+
 public class HeroService {
 
-	public static void main(String[] params) {
+	public void createHero() throws ParseException, IOException {
+
 		List<Hero> listaBohaterow = new ArrayList<>();
 
-		Scanner scan = new Scanner(System.in);
-		int number;
+		JSONParser jsonParser = new JSONParser();
 
-		do {
-			System.out.println("Wybierz jedn¹ opcjê: \nWprowadz bohatera - 1 \nNic nie rób - 0");
-			number = scan.nextInt();
+		FileReader fileReader = new FileReader("D:/Nauka programowania/brat/REPO/heroes.txt");
 
-			switch (number) {
-			case 1:
-				System.out.println("Podaj imiê bohatera");
-				String name = scan.next();
-				System.out.println("Podaj si³ê bohatera");
-				int sila = scan.nextInt();
-				System.out.println("Podaj zrêcznoœæ bohatera");
-				int zrecznosc = scan.nextInt();
-				System.out.println("Podaj witalnoœæ bohatera");
-				int witalnosc = scan.nextInt();
-				Hero bohater = new Hero();
-				bohater.setName(name);
-				bohater.setPower(sila);
-				bohater.setSkill(zrecznosc);
-				bohater.setVitality(witalnosc);
-				listaBohaterow.add(bohater);
-				System.out.println("Podany bohater: " + "\nImiê: " + name + ", Si³a: " + sila + ", Zrêcznoœæ: "
-						+ zrecznosc + ", Witalnoœæ: " + witalnosc);
-				break;
-			case 0:
-				break;
-			default:
-				break;
-			}
-		} while (number != 0);
+		JSONObject jsonObject = (JSONObject) jsonParser.parse(fileReader);
+
+		JSONArray allCards = (JSONArray) jsonObject.get("heroes");
+
+		for (int i = 0; i < allCards.size(); i++) {
+			JSONObject heroesy = (JSONObject) allCards.get(i);
+			Hero hero = new Hero();
+			hero.setName((String) heroesy.get("name"));
+			hero.setPower((Long) heroesy.get("power"));
+			hero.setSkill((Long) heroesy.get("skill"));
+			hero.setVitality((Long) heroesy.get("vitality"));
+			listaBohaterow.add(hero);
+		}
 
 		if (listaBohaterow != null && listaBohaterow.size() != 0) {
 			for (int i = 0; i < listaBohaterow.size(); i++) {
@@ -48,5 +43,4 @@ public class HeroService {
 			}
 		}
 	}
-
 }

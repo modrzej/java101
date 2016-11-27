@@ -2,9 +2,9 @@ package com.java101;
 
 public class Hero {
 	private String name;
-	private int power;
-	private int skill;
-	private int vitality;
+	private long power;
+	private long skill;
+	private long vitality;
 
 	public String getName() {
 		return name;
@@ -14,27 +14,27 @@ public class Hero {
 		this.name = name;
 	}
 
-	public int getPower() {
+	public long getPower() {
 		return power;
 	}
 
-	public void setPower(int power) {
+	public void setPower(long power) {
 		this.power = power;
 	}
 
-	public int getSkill() {
+	public long getSkill() {
 		return skill;
 	}
 
-	public void setSkill(int skill) {
+	public void setSkill(long skill) {
 		this.skill = skill;
 	}
 
-	public int getVitality() {
+	public long getVitality() {
 		return vitality;
 	}
 
-	public void setVitality(int vitality) {
+	public void setVitality(long vitality) {
 		this.vitality = vitality;
 	}
 
