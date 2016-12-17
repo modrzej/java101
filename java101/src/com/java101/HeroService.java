@@ -15,31 +15,44 @@ import org.json.simple.parser.ParseException;;
 
 public class HeroService {
 
-	public void createHero() throws ParseException, IOException {
-
-		List<Hero> listaBohaterow = new ArrayList<>();
-
+	public JSONArray getDataFromStaticJSonFile() throws IOException, ParseException {
 		JSONParser jsonParser = new JSONParser();
 
 		FileReader fileReader = new FileReader("D:/Nauka programowania/brat/REPO/heroes.txt");
 
 		JSONObject jsonObject = (JSONObject) jsonParser.parse(fileReader);
 
-		JSONArray allCards = (JSONArray) jsonObject.get("heroes");
+		JSONArray allHeroes = (JSONArray) jsonObject.get("heroes");
 
-		for (int i = 0; i < allCards.size(); i++) {
-			JSONObject heroesy = (JSONObject) allCards.get(i);
+		return allHeroes;
+	}
+
+	public List<Hero> createHeroesList() throws IOException, ParseException {
+
+		List<Hero> heroesList = new ArrayList<>();
+
+		JSONArray allHeroes = getDataFromStaticJSonFile();
+
+		for (int i = 0; i < allHeroes.size(); i++) {
+			JSONObject heroesy = (JSONObject) allHeroes.get(i);
 			Hero hero = new Hero();
 			hero.setName((String) heroesy.get("name"));
 			hero.setPower((Long) heroesy.get("power"));
 			hero.setSkill((Long) heroesy.get("skill"));
 			hero.setVitality((Long) heroesy.get("vitality"));
-			listaBohaterow.add(hero);
+			heroesList.add(hero);
 		}
 
-		if (listaBohaterow != null && listaBohaterow.size() != 0) {
-			for (int i = 0; i < listaBohaterow.size(); i++) {
-				System.out.println(listaBohaterow.get(i));
+		return heroesList;
+	}
+
+	public void showHero() throws ParseException, IOException {
+
+		List<Hero> heroesList = createHeroesList();
+
+		if (heroesList != null && heroesList.size() != 0) {
+			for (int i = 0; i < heroesList.size(); i++) {
+				System.out.println(heroesList.get(i));
 			}
 		}
 	}

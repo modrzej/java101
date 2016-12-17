@@ -11,6 +11,6 @@ public class Application {
 
 		HeroService hero = new HeroService();
 
-		hero.createHero();
+		hero.showHero();
 	}
 }
