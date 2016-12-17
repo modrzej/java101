@@ -4,6 +4,7 @@
   <groupId>java101</groupId>
   <artifactId>java101-work</artifactId>
   <name>Brat-Repo</name>
+  <version>1.0.0</version>
   <description>Heroes</description>
   
     <dependencies>
@@ -30,5 +31,4 @@
       </plugin>
     </plugins>
   </build>
-  <version>101</version>
 </project>
