@@ -1,12 +1,9 @@
 package com.java101;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -15,16 +12,15 @@ import org.json.simple.parser.ParseException;;
 
 public class HeroService {
 
-	public JSONArray getDataFromStaticJSonFile() throws IOException, ParseException {
-		JSONParser jsonParser = new JSONParser();
+	public void showHero() throws ParseException, IOException {
 
-		FileReader fileReader = new FileReader("D:/Nauka programowania/brat/REPO/heroes.txt");
+		List<Hero> heroesList = createHeroesList();
 
-		JSONObject jsonObject = (JSONObject) jsonParser.parse(fileReader);
-
-		JSONArray allHeroes = (JSONArray) jsonObject.get("heroes");
-
-		return allHeroes;
+		if (heroesList != null && heroesList.size() != 0) {
+			for (int i = 0; i < heroesList.size(); i++) {
+				System.out.println(heroesList.get(i));
+			}
+		}
 	}
 
 	public List<Hero> createHeroesList() throws IOException, ParseException {
@@ -46,14 +42,15 @@ public class HeroService {
 		return heroesList;
 	}
 
-	public void showHero() throws ParseException, IOException {
+	public JSONArray getDataFromStaticJSonFile() throws IOException, ParseException {
+		JSONParser jsonParser = new JSONParser();
 
-		List<Hero> heroesList = createHeroesList();
+		FileReader fileReader = new FileReader("D:/Nauka programowania/brat/REPO/heroes.txt");
 
-		if (heroesList != null && heroesList.size() != 0) {
-			for (int i = 0; i < heroesList.size(); i++) {
-				System.out.println(heroesList.get(i));
-			}
-		}
+		JSONObject jsonObject = (JSONObject) jsonParser.parse(fileReader);
+
+		JSONArray allHeroes = (JSONArray) jsonObject.get("heroes");
+
+		return allHeroes;
 	}
 }
