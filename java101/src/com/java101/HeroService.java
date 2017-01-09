@@ -12,9 +12,9 @@ import org.json.simple.parser.ParseException;;
 
 public class HeroService {
 
-	public void showHero() throws ParseException, IOException {
+	public void getHeroesListFromJsonAndShow() throws ParseException, IOException {
 
-		List<Hero> heroesList = createHeroesList();
+		List<Hero> heroesList = createHeroesListFromJsonFile();
 
 		if (heroesList != null && heroesList.size() != 0) {
 			for (int i = 0; i < heroesList.size(); i++) {
@@ -23,26 +23,31 @@ public class HeroService {
 		}
 	}
 
-	public List<Hero> createHeroesList() throws IOException, ParseException {
+	private List<Hero> createHeroesListFromJsonFile() throws IOException, ParseException {
 
 		List<Hero> heroesList = new ArrayList<>();
 
 		JSONArray allHeroes = getDataFromStaticJSonFile();
 
 		for (int i = 0; i < allHeroes.size(); i++) {
-			JSONObject heroesy = (JSONObject) allHeroes.get(i);
-			Hero hero = new Hero();
-			hero.setName((String) heroesy.get("name"));
-			hero.setPower((Long) heroesy.get("power"));
-			hero.setSkill((Long) heroesy.get("skill"));
-			hero.setVitality((Long) heroesy.get("vitality"));
+			JSONObject heroesFromJson = (JSONObject) allHeroes.get(i);
+			Hero hero = createHeroFrom(heroesFromJson);
 			heroesList.add(hero);
 		}
 
 		return heroesList;
 	}
+	
+	private Hero createHeroFrom(JSONObject heroesFromJson) {
+		Hero hero = new Hero();
+		hero.setName((String) heroesFromJson.get("name"));
+		hero.setPower((Long) heroesFromJson.get("power"));
+		hero.setSkill((Long) heroesFromJson.get("skill"));
+		hero.setVitality((Long) heroesFromJson.get("vitality"));
+		return hero;
+	}
 
-	public JSONArray getDataFromStaticJSonFile() throws IOException, ParseException {
+	private JSONArray getDataFromStaticJSonFile() throws IOException, ParseException {
 		JSONParser jsonParser = new JSONParser();
 
 		FileReader fileReader = new FileReader("D:/Nauka programowania/brat/REPO/heroes.txt");

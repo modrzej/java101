@@ -1,6 +1,5 @@
 package com.java101;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.json.simple.parser.ParseException;
@@ -11,6 +10,6 @@ public class Application {
 
 		HeroService hero = new HeroService();
 
-		hero.showHero();
+		hero.getHeroesListFromJsonAndShow();
 	}
 }
