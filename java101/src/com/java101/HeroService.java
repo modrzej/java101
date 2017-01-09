@@ -12,7 +12,7 @@ import org.json.simple.parser.ParseException;;
 
 public class HeroService {
 
-	public void getHeroesListFromJsonAndShow() throws ParseException, IOException {
+	public void showHeroesListFromJsonFile() throws ParseException, IOException {
 
 		List<Hero> heroesList = createHeroesListFromJsonFile();
 

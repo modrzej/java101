@@ -10,6 +10,6 @@ public class Application {
 
 		HeroService hero = new HeroService();
 
-		hero.getHeroesListFromJsonAndShow();
+		hero.showHeroesListFromJsonFile();
 	}
 }
