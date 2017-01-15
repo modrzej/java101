@@ -5,22 +5,34 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;;
+import org.json.simple.parser.ParseException;
+
+import ch.qos.logback.classic.BasicConfigurator;;
 
 public class HeroService {
 
-	public void showHeroesListFromJsonFile() throws ParseException, IOException {
+	public void createHeroesLogFromHeroesList() throws ParseException, IOException {
+		List<Hero> heroesList = showHeroesListFromJsonFile();
+		BasicConfigurator.configureDefaultContext();
+		Logger logger = Logger.getRootLogger();
+		logger.log(Level.INFO, "Bohaterowie");
+		logger.debug(heroesList);
+	}
+
+	public List<Hero> showHeroesListFromJsonFile() throws ParseException, IOException {
 
 		List<Hero> heroesList = createHeroesListFromJsonFile();
 
 		if (heroesList != null && heroesList.size() != 0) {
 			for (int i = 0; i < heroesList.size(); i++) {
-				System.out.println(heroesList.get(i));
 			}
 		}
+		return heroesList;
 	}
 
 	private List<Hero> createHeroesListFromJsonFile() throws IOException, ParseException {
@@ -37,7 +49,7 @@ public class HeroService {
 
 		return heroesList;
 	}
-	
+
 	private Hero createHeroFrom(JSONObject heroesFromJson) {
 		Hero hero = new Hero();
 		hero.setName((String) heroesFromJson.get("name"));
