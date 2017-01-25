@@ -16,23 +16,12 @@ import ch.qos.logback.classic.BasicConfigurator;;
 
 public class HeroService {
 
-	public void createHeroesLogFromHeroesList() throws ParseException, IOException {
-		List<Hero> heroesList = showHeroesListFromJsonFile();
+	public void createAndShowHeroesLogFromHeroesList() throws ParseException, IOException {
+		List<Hero> heroesList = createHeroesListFromJsonFile();
 		BasicConfigurator.configureDefaultContext();
 		Logger logger = Logger.getRootLogger();
 		logger.log(Level.INFO, "Bohaterowie");
-		logger.debug(heroesList);
-	}
-
-	public List<Hero> showHeroesListFromJsonFile() throws ParseException, IOException {
-
-		List<Hero> heroesList = createHeroesListFromJsonFile();
-
-		if (heroesList != null && heroesList.size() != 0) {
-			for (int i = 0; i < heroesList.size(); i++) {
-			}
-		}
-		return heroesList;
+		logger.info(heroesList);
 	}
 
 	private List<Hero> createHeroesListFromJsonFile() throws IOException, ParseException {
