@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Heroes</title>
     <style type="text/css">
-    	#tabela {
+    	#table1 {
     	    border: 1px solid black;
    			border-collapse: collapse;
   			background-color: #ffc;
@@ -13,12 +13,12 @@
 </head>
 <body>
     <h2>Heroes</h2>
-    <table id="tabela">
+    <table id="table1">
 	<tr>
-		<td>Name</td>
-		<td>Power</td>
-		<td>Skill</td>
-		<td>Vitality</td>
+		<th>Name</th>
+		<th>Power</th>
+		<th>Skill</th>
+		<th>Vitality</th>
 	</tr>
 	<#list heroes as hero>
 	<tbody>

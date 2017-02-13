@@ -8,7 +8,6 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 
 @EnableAutoConfiguration
 @SpringBootApplication
-
 public class Application extends SpringBootServletInitializer {
 
 	@Override

@@ -11,15 +11,6 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;;
 
 public class HeroService {
-	
-	// Wyświetlanie bohaterów za pomocą logów
-/*	public void createAndShowHeroesLogFromHeroesList() throws ParseException, IOException {
-		List<Hero> heroesList = createHeroesListFromJsonFile();
-		BasicConfigurator.configureDefaultContext();
-		Logger logger = Logger.getRootLogger();
-		logger.log(Level.INFO, "Bohaterowie");
-		logger.info(heroesList);
-	}*/
 
 	public List<Hero> createHeroesListFromJsonFile() throws IOException, ParseException {
 
