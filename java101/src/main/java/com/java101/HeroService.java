@@ -5,26 +5,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-import ch.qos.logback.classic.BasicConfigurator;;
+import org.json.simple.parser.ParseException;;
 
 public class HeroService {
 
-	public void createAndShowHeroesLogFromHeroesList() throws ParseException, IOException {
-		List<Hero> heroesList = createHeroesListFromJsonFile();
-		BasicConfigurator.configureDefaultContext();
-		Logger logger = Logger.getRootLogger();
-		logger.log(Level.INFO, "Bohaterowie");
-		logger.info(heroesList);
-	}
-
-	private List<Hero> createHeroesListFromJsonFile() throws IOException, ParseException {
+	public List<Hero> createHeroesListFromJsonFile() throws IOException, ParseException {
 
 		List<Hero> heroesList = new ArrayList<>();
 
