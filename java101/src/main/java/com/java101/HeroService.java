@@ -8,8 +8,10 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;;
+import org.json.simple.parser.ParseException;
+import org.springframework.stereotype.Service;;
 
+@Service
 public class HeroService {
 
 	public List<Hero> createHeroesListFromJsonFile() throws IOException, ParseException {
